@@ -28,7 +28,7 @@ public class FacultiesController {
 
     @GetMapping("/filterBy{colour}")
     public ResponseEntity sortByColour(@PathVariable String colour) {
-        Collection<Faculty>sortedByColour = this.facultyService.getAllFacultiesInfo().stream()
+        Collection<Faculty>sortedByColour = this.facultyService.getAllFaculties().stream()
                 .filter(e->e.getColour().matches(colour)).collect(Collectors.toList());
         if (sortedByColour == null) {
             return ResponseEntity.notFound().build();
@@ -37,8 +37,11 @@ public class FacultiesController {
     }
 
     @GetMapping
-    public Collection<Faculty> getAllFacultiesInfo() {
-        return this.facultyService.getAllFacultiesInfo();
+    public Collection<Faculty> getAllFacultiesInfo(@RequestParam(required = false) String name) {
+        if (name != null && !name.isEmpty()) {
+            return this.facultyService.findByNameContainsIgnoreCase(name);
+        }
+        return this.facultyService.getAllFaculties();
     }
 
     @PostMapping

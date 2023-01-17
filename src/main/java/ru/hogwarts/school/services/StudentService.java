@@ -33,4 +33,8 @@ public class StudentService {
     public void deleteStudent(long id) {
         this.studentRepository.deleteById(id);
     }
+
+    public Collection<Student> findByAgeBetween(int min, int max) {
+        return this.studentRepository.findByAgeBetween(min, max);
+    }
 }

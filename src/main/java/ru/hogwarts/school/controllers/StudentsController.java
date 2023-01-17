@@ -28,7 +28,11 @@ public class StudentsController {
     }
 
     @GetMapping
-    public Collection<Student> getALLStudents() {
+    public Collection<Student> getALLStudents(@RequestParam(required = false) Integer min,
+                                              @RequestParam(required = false) Integer max) {
+        if (min != null&&max!=null) {
+            return this.studentService.findByAgeBetween(min, max);
+        }
         return this.studentService.getAllStudents();
     }
 
@@ -60,4 +64,9 @@ public class StudentsController {
         this.studentService.deleteStudent(id);
         return ResponseEntity.ok().build();
     }
+
+//    @GetMapping
+//    public Collection<Student> findByFacultyName(@RequestParam String facultyName) {
+//        return this.studentService.findByFaculty(facultyName);
+//    }
 }
