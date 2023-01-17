@@ -1,5 +1,6 @@
 package ru.hogwarts.school.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -15,6 +16,7 @@ public class Student {
     private Integer age;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(referencedColumnName = "name")
+    @JsonBackReference
     private Faculty faculty;
 
     public Student() {
