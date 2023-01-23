@@ -22,8 +22,11 @@ public class FacultyService {
         return this.facultyRepository.findById(id).get();
     }
 
-    public Collection<Faculty> getAllFacultiesInfo() {
+    public Collection<Faculty> getAllFaculties() {
         return this.facultyRepository.findAll();
+    }
+    public Collection<Faculty> findByNameContainsIgnoreCase(String name) {
+        return this.facultyRepository.findByNameContainsIgnoreCase(name);
     }
 
     public Faculty updateFacultyInfo(Faculty faculty) {
