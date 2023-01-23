@@ -1,7 +1,6 @@
 package ru.hogwarts.school.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -15,7 +14,7 @@ public class Student {
     private String name;
     private Integer age;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(referencedColumnName = "name")
+    @JoinColumn(name = "faculty_id",nullable = false)
     @JsonBackReference
     private Faculty faculty;
 

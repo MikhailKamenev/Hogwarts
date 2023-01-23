@@ -1,7 +1,6 @@
 package ru.hogwarts.school.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -9,7 +8,6 @@ import java.util.Collection;
 
 @Entity
 @Data
-@AllArgsConstructor
 public class Faculty {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
